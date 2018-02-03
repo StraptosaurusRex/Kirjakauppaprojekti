@@ -1,35 +1,53 @@
 package fi.hh.swd20.Kirjakauppaprojekti.domain;
 
-public class Kirja {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private String nimi;
+@Entity
+
+public class Kirja {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	private String teos;
 	private String tekija;
 	private String vuosi;
 	private String isbn;
 	private String hinta;
 	
 	public Kirja() {
-		this.nimi = null;
+		this.teos = null;
 		this.tekija = null;
 		this.vuosi = null;
 		this.isbn = null;
 		this.hinta = null;
 	}
 	
-	public Kirja(String nimi, String tekija, String vuosi, String isbn, String hinta) {
-		this.nimi = nimi;
+	public Kirja(String teos, String tekija, String vuosi, String isbn, String hinta) {
+		super();
+		this.teos = teos;
 		this.tekija = tekija;
 		this.vuosi = vuosi;
 		this.isbn = isbn;
 		this.hinta = hinta;
 	}
-
-	public String getNimi() {
-		return nimi;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTeos() {
+		return teos;
+	}
+
+	public void setTeos(String teos) {
+		this.teos = teos;
 	}
 
 	public String getTekija() {
@@ -66,8 +84,8 @@ public class Kirja {
 
 	@Override
 	public String toString() {
-		return "Kirja [nimi=" + nimi + ", tekija=" + tekija + ", vuosi=" + vuosi + ", isbn=" + isbn + ", hinta=" + hinta
+		return "Kirja [teos=" + teos + ", tekija=" + tekija + ", vuosi=" + vuosi + ", isbn=" + isbn + ", hinta=" + hinta
 				+ "]";
 	}
-	
+
 }
