@@ -44,4 +44,16 @@ public class KirjaController {
         return "redirect:/kirjalista";
     }    
     
+   @RequestMapping(value = "/muokkaa/{id}", method = RequestMethod.GET)
+    public String Muokkaa(@PathVariable("id") Long kirjaId, Model model){
+	   	model.addAttribute("kirja", repository.findOne(kirjaId));
+        return "muokkaa";
+    } 
+    
+   @RequestMapping(value = "/muokkaa/save/{id}", method = RequestMethod.POST)
+   public String muutos(@PathVariable("id") Long kirjaId, Kirja kirja){
+	   repository.delete(kirjaId);
+       repository.save(kirja);
+       return "redirect:/kirjalista";
+   } 
 }
