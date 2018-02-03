@@ -39,7 +39,7 @@ public class KirjaController {
     }    
 
     @RequestMapping(value = "/poista/{id}", method = RequestMethod.GET)
-    public String deleteStudent(@PathVariable("id") Long kirjaId, Model model) {
+    public String deleteKirja(@PathVariable("id") Long kirjaId, Model model) {
     	repository.delete(kirjaId);
         return "redirect:/kirjalista";
     }    
