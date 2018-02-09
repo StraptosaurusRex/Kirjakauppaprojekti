@@ -22,6 +22,12 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="hinta">Hinta</label>
 			<input type="text" th:field="*{hinta}" />
+			<div style="clear: both; display: block; height: 10px;"></div>					
+		  	<label for="deplist">Kategoria</label>
+			<select id="deplist" th:field="*{kategoria}" class="form-control">
+       		<option th:each="kategoria: ${kategoriat}" th:value="${kategoria.kategoriaid}" th:text="${kategoria.nimi}"></option>
+    		</select>
+			
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" value="Save"></input>
 		</form>

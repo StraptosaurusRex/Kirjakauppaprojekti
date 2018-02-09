@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 
@@ -16,6 +18,9 @@ public class Kirja {
 	private String vuosi;
 	private String isbn;
 	private String hinta;
+    @ManyToOne
+    @JoinColumn(name = "kategoriaid")
+    private Kategoria kategoria;
 	
 	public Kirja() {
 		this.teos = null;
@@ -81,11 +86,20 @@ public class Kirja {
 	public void setHinta(String hinta) {
 		this.hinta = hinta;
 	}
+	
+
+	public Kategoria getKategoria() {
+		return kategoria;
+	}
+
+	public void setKategoria(Kategoria kategoria) {
+		this.kategoria = kategoria;
+	}
 
 	@Override
 	public String toString() {
-		return "Kirja [teos=" + teos + ", tekija=" + tekija + ", vuosi=" + vuosi + ", isbn=" + isbn + ", hinta=" + hinta
-				+ "]";
+		return "Kirja [id=" + id + ", teos=" + teos + ", tekija=" + tekija + ", vuosi=" + vuosi + ", isbn=" + isbn
+				+ ", hinta=" + hinta + ", kategoria=" + this.getKategoria() +"]";
 	}
 
 }

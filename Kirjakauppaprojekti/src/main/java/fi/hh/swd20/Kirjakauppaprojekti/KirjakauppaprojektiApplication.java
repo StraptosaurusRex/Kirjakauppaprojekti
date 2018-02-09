@@ -6,6 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import fi.hh.swd20.Kirjakauppaprojekti.domain.Kategoria;
+import fi.hh.swd20.Kirjakauppaprojekti.domain.KategoriaRepository;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.Kirja;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.KirjaRepository;
 
@@ -19,8 +22,14 @@ public class KirjakauppaprojektiApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kirjaDemo(KirjaRepository repository) {
+	public CommandLineRunner kirjaDemo(KirjaRepository repository, KategoriaRepository katrepository) {
 		return (args) -> {
+			
+			log.info("tallenna pari kategoriaa");
+			katrepository.save(new Kategoria("Sci-Fi"));
+			katrepository.save(new Kategoria("Fantasia"));
+			katrepository.save(new Kategoria("Historia"));
+			
 			log.info("tallenna pari kirjaa");
 			repository.save(new Kirja("Hyperionin laulut", "John Keats", "1998", "23571047650193750917", "90"));
 			repository.save(new Kirja("Kadotettu Paratiisi", "John Milton", "1600", "09346+13746+9714+36", "80"));	

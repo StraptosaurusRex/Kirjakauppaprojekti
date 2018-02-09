@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import fi.hh.swd20.Kirjakauppaprojekti.domain.KategoriaRepository;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.Kirja;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.KirjaRepository;
 
@@ -14,6 +16,9 @@ public class KirjaController {
 	
 	@Autowired
 	private KirjaRepository repository; 
+	
+	@Autowired
+	private KategoriaRepository katrepository;
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String returnIndex(){
@@ -29,6 +34,7 @@ public class KirjaController {
     @RequestMapping(value = "/lisaa")
     public String lisaaKirja(Model model){
     	model.addAttribute("kirja", new Kirja());
+    	model.addAttribute("kategoriat", katrepository.findAll());
         return "lisaakirja";
     }     
     
