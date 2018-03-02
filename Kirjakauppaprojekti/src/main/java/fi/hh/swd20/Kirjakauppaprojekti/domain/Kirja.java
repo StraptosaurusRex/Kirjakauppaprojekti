@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 public class Kirja {
@@ -19,26 +21,29 @@ public class Kirja {
 	private String isbn;
 	private String hinta;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "kategoriaid")
     private Kategoria kategoria;
 	
 	public Kirja() {
 		this.teos = null;
 		this.tekija = null;
+		this.kategoria = null;
 		this.vuosi = null;
 		this.isbn = null;
 		this.hinta = null;
 	}
 	
-	public Kirja(String teos, String tekija, String vuosi, String isbn, String hinta) {
+	public Kirja(String teos, String tekija, Kategoria kategoria, String vuosi, String isbn, String hinta) {
 		super();
 		this.teos = teos;
 		this.tekija = tekija;
+		this.kategoria = kategoria;
 		this.vuosi = vuosi;
 		this.isbn = isbn;
 		this.hinta = hinta;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -86,7 +91,6 @@ public class Kirja {
 	public void setHinta(String hinta) {
 		this.hinta = hinta;
 	}
-	
 
 	public Kategoria getKategoria() {
 		return kategoria;
@@ -99,7 +103,9 @@ public class Kirja {
 	@Override
 	public String toString() {
 		return "Kirja [id=" + id + ", teos=" + teos + ", tekija=" + tekija + ", vuosi=" + vuosi + ", isbn=" + isbn
-				+ ", hinta=" + hinta + ", kategoria=" + this.getKategoria() +"]";
+				+ ", hinta=" + hinta + ", kategoria=" + kategoria + "]";
 	}
+	
+
 
 }

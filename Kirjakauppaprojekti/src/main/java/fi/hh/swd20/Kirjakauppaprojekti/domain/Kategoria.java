@@ -52,7 +52,7 @@ public class Kategoria {
 
 	@Override
 	public String toString() {
-		return "Kategoria [kategoriaid=" + kategoriaid + ", nimi=" + nimi + ", kirjat=" + kirjat + "]";
+		return "Kategoria [kategoriaid=" + kategoriaid + ", nimi=" + nimi + "]";
 	}
 
 }
