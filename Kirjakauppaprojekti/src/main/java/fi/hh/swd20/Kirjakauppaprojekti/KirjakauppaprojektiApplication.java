@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import fi.hh.swd20.Kirjakauppaprojekti.domain.User;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.Kategoria;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.KategoriaRepository;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.Kirja;
 import fi.hh.swd20.Kirjakauppaprojekti.domain.KirjaRepository;
+import fi.hh.swd20.Kirjakauppaprojekti.domain.UserRepository;
 
 @SpringBootApplication
 public class KirjakauppaprojektiApplication {
@@ -22,7 +24,7 @@ public class KirjakauppaprojektiApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kirjaDemo(KirjaRepository repository, KategoriaRepository katrepository) {
+	public CommandLineRunner kirjaDemo(KirjaRepository repository, KategoriaRepository katrepository, UserRepository userepository) {
 		return (args) -> {
 			
 			log.info("tallenna pari kategoriaa");
@@ -39,6 +41,11 @@ public class KirjakauppaprojektiApplication {
 				log.info(kirja.toString());
 			}
 
+			// Create users: admin/admin user/user
+			User user1 = new User("user", "$2a$07$l80XR85xKlvQWlvan5wQxuo.L77GV.q.mbduh73gHRX7iSZ6h5Epm", "USER", "lalla@laa");
+			User user2 = new User("admin", "$2a$07$WyAVc6FCceYsjc62eNm5veWRMhFlNNCU3ochAlvUAhwJsoBQpiE3W", "ADMIN", "lollo@loo");
+			userepository.save(user1);
+			userepository.save(user2);
 		};
 	}
 	

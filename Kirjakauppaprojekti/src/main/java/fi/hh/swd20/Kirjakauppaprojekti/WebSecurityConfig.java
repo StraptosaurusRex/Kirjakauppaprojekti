@@ -9,14 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
+import fi.hh.swd20.Kirjakauppaprojekti.web.UserDetailServiceImpl;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
- /***   @Autowired
-    private UserDetailServiceImpl userDetailsService; **/
+ @Autowired
+    private UserDetailServiceImpl userDetailsService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -36,17 +36,17 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
       .logout()
           .permitAll();
     }
-    @Autowired
+  /**  @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER").and()
                 .withUser("admin").password("password").roles("USER", "ADMIN");
-    }
+    }**/
     
- /**   @Autowired
+   @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-    } **/
+    } 
 		
 }
