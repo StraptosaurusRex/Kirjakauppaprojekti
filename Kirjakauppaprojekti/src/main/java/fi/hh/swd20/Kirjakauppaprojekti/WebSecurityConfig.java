@@ -36,15 +36,15 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
       .logout()
           .permitAll();
     }
-  /**  @Autowired
+    /** @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER").and()
                 .withUser("admin").password("password").roles("USER", "ADMIN");
-    }**/
-    
-   @Autowired
+    }
+    **/
+     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     } 

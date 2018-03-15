@@ -26,11 +26,11 @@ public class Kategoria {
 		this.nimi = nimi;
 	}
 
-	public Long getKategoriaid() {
+	public Long getKategoriaId() {
 		return kategoriaid;
 	}
 
-	public void setKategoriaid(Long kategoriaid) {
+	public void setKategoriaId(Long kategoriaid) {
 		this.kategoriaid = kategoriaid;
 	}
 

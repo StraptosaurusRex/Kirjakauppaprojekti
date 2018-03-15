@@ -8,19 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import fi.hh.swd20.Kirjakauppaprojekti.web.KirjaController;
+import fi.hh.swd20.Kirjakauppaprojekti.web.UserController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class KirjakauppaprojektiApplicationTests {
-
+public class UserControllerTest {
     @Autowired
-    private KirjaController controller;
+    private UserController usecontroller;
     
-    //Testaa kontrollerin luonti
     @Test
     public void contextLoads() throws Exception {
-       assertThat(controller).isNotNull();
-    }	
-
+        assertThat(usecontroller).isNotNull();
+    }
 }

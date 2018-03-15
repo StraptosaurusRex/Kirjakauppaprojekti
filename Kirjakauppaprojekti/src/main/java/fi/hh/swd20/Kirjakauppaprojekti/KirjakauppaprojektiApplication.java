@@ -41,7 +41,7 @@ public class KirjakauppaprojektiApplication {
 				log.info(kirja.toString());
 			}
 
-			// Create users: admin/admin user/user
+			// Create users: admin/salasana user/combustion
 			User user1 = new User("user", "$2a$07$l80XR85xKlvQWlvan5wQxuo.L77GV.q.mbduh73gHRX7iSZ6h5Epm", "USER", "lalla@laa");
 			User user2 = new User("admin", "$2a$07$WyAVc6FCceYsjc62eNm5veWRMhFlNNCU3ochAlvUAhwJsoBQpiE3W", "ADMIN", "lollo@loo");
 			userepository.save(user1);

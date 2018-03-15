@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface KirjaRepository extends CrudRepository<Kirja, Long> {
 
-	List<Kirja> findBytekija(String tekija);
+	List<Kirja> findByTekija(String tekija);
 	
 }
 
