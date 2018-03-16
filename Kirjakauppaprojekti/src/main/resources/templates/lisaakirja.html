@@ -9,10 +9,10 @@
 	<div>
 		<form th:object="${kirja}" th:action="@{save}" action="#" method="post">
 		  	<label for="teos">Teos</label>
-			<input type="text" id="fname" th:field="*{teos}" />
+			<input type="text" id="teos" th:field="*{teos}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="tekija">Tekijä</label>
-			<input type="text" id="lname" th:field="*{tekija}" />
+			<input type="text" id="tekija" th:field="*{tekija}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="vuosi">Vuosi</label>
 			<input type="text" th:field="*{vuosi}" />
@@ -23,9 +23,9 @@
 			<label for="hinta">Hinta</label>
 			<input type="text" th:field="*{hinta}" />
 			<div style="clear: both; display: block; height: 10px;"></div>					
-		  	<label for="deplist">Kategoria</label>
-			<select id="deplist" th:field="*{kategoria}" class="form-control">
-       		<option th:each="kategoria: ${kategoriat}" th:value="${kategoria.kategoriaid}" th:text="${kategoria.nimi}"></option>
+		  	<label for="katlist">Kategoria</label>
+			<select id="katlist" th:field="*{kategoria}" class="form-control">
+       		<option th:each="kategoria: ${kategoriat}" th:value="${kategoria.nimi}" th:text="${kategoria.nimi}"></option>
     		</select>
 			
 			<div style="clear: both; display: block; height: 10px;"></div>

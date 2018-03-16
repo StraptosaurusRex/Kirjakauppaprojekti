@@ -68,6 +68,7 @@ public class KirjaController {
    @RequestMapping(value = "/muokkaa/{id}", method = RequestMethod.GET)
     public String Muokkaa(@PathVariable("id") Long kirjaId, Model model){
 	   	model.addAttribute("kirja", repository.findOne(kirjaId));
+	   	model.addAttribute("kategoriat", katrepository.findAll());
         return "muokkaa";
     } 
     
